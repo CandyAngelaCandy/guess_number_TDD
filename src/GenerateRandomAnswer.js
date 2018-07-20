@@ -14,6 +14,7 @@ class GenerateRandomAnswer{
             let systemRandom = Math.random();
 
 
+            console.log(`random ${systemRandom}`);
             let oneDigit = Math.floor(systemRandom*(this.max-this.min +1)+this.min);
 
 
