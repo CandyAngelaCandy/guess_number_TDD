@@ -1,4 +1,4 @@
-let GenerateRandomAnswer = require("./GenerateRandomAnswer");
+//let GenerateRandomAnswer = require("./GenerateRandomAnswer");
 
 class GuessNumberGame{
 
@@ -30,14 +30,21 @@ class GuessNumberGame{
           }
 
       });
+      let result = `${aCount}A${bCount}B`;
+
+      if(result == "4A0B"){
+          console.log("You success.");
+          return  `You success`;
+      }
 
       this.count++;
 
       if(this.count == 7){
-          console.log("Your has only 6 chances.");
+          console.log("Your has only 6 chances.Game restart.");
+          return `Your has only 6 chances.Game restart.`;
       };
 
-      return `${aCount}A${bCount}B`;
+      return result;
     }
 
 
@@ -65,4 +72,4 @@ class GuessNumberGame{
 
 }
 
-module.exports = GuessNumberGame;
+//module.exports = GuessNumberGame;

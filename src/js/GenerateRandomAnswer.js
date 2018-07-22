@@ -15,7 +15,7 @@ class GenerateRandomAnswer{
 
 
             let oneDigit = Math.floor(systemRandom*(this.max-this.min +1)+this.min);
-
+            //console.log(oneDigit);
 
             if(answer.indexOf(oneDigit) != -1){
                 i--;

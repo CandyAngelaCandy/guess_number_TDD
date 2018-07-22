@@ -7,8 +7,12 @@ describe('GuessNumberGame',function () {
 
     beforeEach(function () {
 
+        // let generateRandomAnswer = new GenerateRandomAnswer(0,9,4);
+        // jest.spyOn(generateRandomAnswer,"generateRandomAnswer").mockReturnValueOnce("1234");
+
         jest.spyOn(GenerateRandomAnswer.prototype,
-              "generateRandomAnswer").mockReturnValueOnce("1234");
+               "generateRandomAnswer").mockReturnValueOnce("1234");//原型有问题，待修改
+        console.log(new GuessNumberGame().answer);
 
     });
 
@@ -59,8 +63,9 @@ describe('GuessNumberGame',function () {
 
     })
 
-    describe('user has only 6 chances',function () {
+    it('user has only 6 chances',function () {
 
+        const spyConsole = jest.spyOn( console, 'log' );
         const chanceCount = 6;
 
         let game = new GuessNumberGame();
@@ -71,22 +76,19 @@ describe('GuessNumberGame',function () {
 
         game.test("5 6 7 1");
 
+       // expect(spyConsole).toHaveBeenCalled("Your has only 6 chances.");
         //jest.spyOn(console,log).mockReturnValueOnce("Your has only 6 chances.");//?
     });
     
      describe('generate random answer',function () {
 
-         let number = 0;
+         beforeEach(function () {
 
-         jest.spyOn(Math,"random")
-             .mockImplementation(() => number+=0.1);
+             let number = 0;
+             jest.spyOn(Math,"random")
+                 .mockImplementation(() => number=0.1);
 
-         console.log(Math.random());
-         console.log(Math.random());
-         console.log(Math.random());
-         console.log(Math.random());
-         console.log(Math.random());
-         console.log(Math.random());
+         });
 
           it('should return 1234 for input 0,9,4 when Math.random function is mocked',function () {
               expect(new GenerateRandomAnswer(0,9,4).generateRandomAnswer()).toEqual("1234");

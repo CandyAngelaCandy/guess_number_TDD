@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess nubmer game</title>
+    <script src = "../js/GuessNumberGame.js"></script>
+    <style>
+        #game_result{
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+   <form action="">
+       <input type="text" id="game_input">
+       <button id= "game_submit" type="submit">submit</button>
+   </form>
+   <table id="game_result" border="1">
+   </table>
+</body>
+   <script src = "../js/GuessNumberGame.js"></script>
+   <script src = "../js/GenerateRandomAnswer.js"></script>
+   <script>
+
+       let guessNumberGame = new GuessNumberGame();
+
+      document.getElementById("game_submit").addEventListener("click",function (event) {
+          event.preventDefault();
+
+          let gameInputVal = document.getElementById("game_input").value;
+          //alert(gameInputVal);
+
+          let gameResult = guessNumberGame.test(gameInputVal);
+
+          let game_result_table = document.getElementById("game_result");
+          game_result_table.innerHTML += `<tr><td>${gameInputVal}</td><td>${gameResult}</td></tr>`;
+
+          if(gameResult == "Your has only 6 chances.Game restart."){
+              guessNumberGame.count = 0;
+          }
+          //console.log("gameResult:",gameResult);
+      })
+   </script>
+
+</html>
